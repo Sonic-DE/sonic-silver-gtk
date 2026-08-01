@@ -693,10 +693,10 @@ parser = argparse.ArgumentParser(
     description='Generates Breeze assets according to the specified color '
                 'scheme.')
 parser.add_argument('--colorscheme', '-c', action='store',
-                    default='/usr/share/color-schemes/BreezeLight.colors',
+                    default='/usr/share/color-schemes/SilverLight.colors',
                     help='color scheme to use')
 parser.add_argument('--basecolorscheme', '-b', action='store',
-                    default='/usr/share/color-schemes/BreezeLight.colors',
+                    default='/usr/share/color-schemes/SilverLight.colors',
                     help='base color scheme')
 
 parser.add_argument('--assets-dir', '-a', action='store',
@@ -858,6 +858,9 @@ for key in sorted(_colors):
         gtk3.write('${0}:rgb({1});\n'.format(key, _colors[key]))
     elif 'Disabled' in key or 'Inactive' in key:
         gtk3.write('${0}:{1};\n'.format(key, _colors[key]))
-    elif re.match('[0-9]+,[0-9]+,[0-9]+', _colors[key]):
+    elif re.fullmatch(r'[0-9]+,[0-9]+,[0-9]+', _colors[key]):
         gtk3.write('${0}:rgb({1});\n'.format(key, _colors[key]))
+    elif re.fullmatch(r'[0-9]+,[0-9]+,[0-9]+,[0-9]+', _colors[key]):
+        red, green, blue, alpha = _colors[key].split(',')
+        gtk3.write('${0}:rgba({1},{2},{3},{4});\n'.format(key, red, green, blue, int(alpha) / 255))
 gtk3.close()

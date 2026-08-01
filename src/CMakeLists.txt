@@ -20,33 +20,33 @@ function(gen_targets THEME_NAME)
     )
 endfunction()
 
-gen_targets(Breeze)
-gen_targets(Breeze-Dark)
+gen_targets(Silver)
+gen_targets(Silver-Dark)
 
-list(APPEND Breeze_TARGETS
-    "${PROJECT_BINARY_DIR}/Breeze/gtk-3.0/gtk-dark.css"
-    "${PROJECT_BINARY_DIR}/Breeze/gtk-4.0/gtk-dark.css"
+list(APPEND Silver_TARGETS
+    "${PROJECT_BINARY_DIR}/Silver/gtk-3.0/gtk-dark.css"
+    "${PROJECT_BINARY_DIR}/Silver/gtk-4.0/gtk-dark.css"
 )
 
 add_custom_command(
-    OUTPUT ${Breeze-Dark_TARGETS}
+    OUTPUT ${Silver-Dark_TARGETS}
     DEPENDS ${SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/build_theme.sh
-    COMMAND ${CMAKE_CURRENT_BINARY_DIR}/build_theme.sh -c BreezeDark -t "${PROJECT_BINARY_DIR}/Breeze-Dark" -r "${BREEZE_COLOR_INSTALL_ROOT}"
+    COMMAND ${CMAKE_CURRENT_BINARY_DIR}/build_theme.sh -c SilverDark -t "${PROJECT_BINARY_DIR}/Silver-Dark" -r "${SILVER_COLOR_INSTALL_ROOT}"
     WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}/src"
 )
-add_custom_target(Breeze-Dark ALL DEPENDS ${Breeze-Dark_TARGETS})
+add_custom_target(Silver-Dark ALL DEPENDS ${Silver-Dark_TARGETS})
 
 add_custom_command(
-    OUTPUT ${Breeze_TARGETS}
+    OUTPUT ${Silver_TARGETS}
     DEPENDS ${SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/build_theme.sh
-    COMMAND ${CMAKE_CURRENT_BINARY_DIR}/build_theme.sh -c BreezeLight -t "${PROJECT_BINARY_DIR}/Breeze" -r "${BREEZE_COLOR_INSTALL_ROOT}"
-    COMMAND cp gtk-dark-3.0.css "${PROJECT_BINARY_DIR}/Breeze/gtk-3.0/gtk-dark.css"
-    COMMAND cp gtk-dark-4.0.css "${PROJECT_BINARY_DIR}/Breeze/gtk-4.0/gtk-dark.css"
+    COMMAND ${CMAKE_CURRENT_BINARY_DIR}/build_theme.sh -c SilverLight -t "${PROJECT_BINARY_DIR}/Silver" -r "${SILVER_COLOR_INSTALL_ROOT}"
+    COMMAND cp gtk-dark-3.0.css "${PROJECT_BINARY_DIR}/Silver/gtk-3.0/gtk-dark.css"
+    COMMAND cp gtk-dark-4.0.css "${PROJECT_BINARY_DIR}/Silver/gtk-4.0/gtk-dark.css"
     WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}/src"
 )
-add_custom_target(Breeze ALL DEPENDS ${Breeze_TARGETS})
+add_custom_target(Silver ALL DEPENDS ${Silver_TARGETS})
 
-install(DIRECTORY "${PROJECT_BINARY_DIR}/Breeze" DESTINATION "${KDE_INSTALL_FULL_DATAROOTDIR}/themes/")
-install(DIRECTORY "${PROJECT_BINARY_DIR}/Breeze-Dark" DESTINATION "${KDE_INSTALL_FULL_DATAROOTDIR}/themes/")
-install(FILES settings.ini DESTINATION "${KDE_INSTALL_FULL_DATAROOTDIR}/themes/Breeze")
-install(FILES settings.ini DESTINATION "${KDE_INSTALL_FULL_DATAROOTDIR}/themes/Breeze-Dark")
+install(DIRECTORY "${PROJECT_BINARY_DIR}/Silver" DESTINATION "${KDE_INSTALL_FULL_DATAROOTDIR}/themes/")
+install(DIRECTORY "${PROJECT_BINARY_DIR}/Silver-Dark" DESTINATION "${KDE_INSTALL_FULL_DATAROOTDIR}/themes/")
+install(FILES settings.ini DESTINATION "${KDE_INSTALL_FULL_DATAROOTDIR}/themes/Silver")
+install(FILES settings.ini DESTINATION "${KDE_INSTALL_FULL_DATAROOTDIR}/themes/Silver-Dark")

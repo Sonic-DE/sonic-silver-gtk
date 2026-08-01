@@ -11,8 +11,8 @@ find_package(GTKEngine)
 find_package(Sass REQUIRED)
 find_package(PythonCairo)
 set_package_properties(PythonCairo PROPERTIES TYPE REQUIRED PURPOSE "Required to render assets")
-find_package(Breeze 5.27.80 REQUIRED)
-set_package_properties(Breeze PROPERTIES TYPE REQUIRED PURPOSE "Required to build the Breeze GTK+ styles")
+find_package(SonicSilver 5.27.80 REQUIRED)
+set_package_properties(SonicSilver PROPERTIES TYPE REQUIRED PURPOSE "Required to build the Silver GTK+ styles")
 
 
 include(KDEInstallDirs)
@@ -20,3 +20,4 @@ include(KDEInstallDirs)
 add_subdirectory(src)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
+
