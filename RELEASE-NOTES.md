@@ -2,6 +2,10 @@
 
 The Silver theme for GTK apps, so programs like Firefox and GIMP match the rest of your SonicDE desktop.
 
+## 6.8.2 (2026-11-10)
+
+No SonicDE-specific changes in this release; it brings the package up to date with upstream.
+
 ## 6.8.0 (2026-10-20)
 
 - The dark variant of the GTK theme now loads its Silver styling correctly.
